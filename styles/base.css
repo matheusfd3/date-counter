@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0C0C0D;
+    color: #E1E1E6;
+}
+  
+body,
+button,
+input, 
+select {
+    font-family: "Roboto", sans-serif;
+    outline: none;
+}
+  
+:root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}

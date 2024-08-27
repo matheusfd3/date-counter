@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/dates.css">
+    <title>Contador de Datas</title>
+</head>
+<body onload="loadDatesFromLocalStorage()">
+    <section id="dates-container">
+        <header>
+            <h1>Contador de Datas</h1>
+            <form action="javascript:void(0)" onsubmit="addDate()">
+                <div>
+                    <label for="date-title">Título</label>
+                    <input required type="text" name="worker" id="date-title" autocomplete="off" placeholder="Título da data">
+                </div>
+                <div>
+                    <label for="date">Data e Hora</label>
+                    <input required autocomplete="off" type="datetime-local" id="date" placeholder="Escolha uma data e hora">
+                </div>
+                <button type="submit"><ion-icon name="add-outline"></ion-icon></button>
+            </form>
+            <ul id="dates">
+                <img id="loading-gif" src="./images/loading.gif" alt="Gif">
+            </ul>
+        </header>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

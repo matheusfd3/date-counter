@@ -1,0 +1,94 @@
+section#dates-container header {
+    padding: 1.5rem;
+}
+
+section#dates-container header h1 {
+    color: #E1E1E6;
+    margin-bottom: 1.53125rem;
+    font-size: 1.4375rem;
+}
+
+section#dates-container header form {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+section#dates-container header form div:first-child {
+    flex: 1;
+}
+
+section#dates-container header form div {
+    display: flex;
+    flex-direction: column;
+    flex: 0;
+}
+
+section#dates-container header form div label {
+    font-size: 0.75rem;
+    color: #AFABB6;
+    margin-bottom: 0.5rem;
+}
+
+section#dates-container header form div input {
+    background-color: #17171A;
+    border: 2px solid #252529;
+    border-radius: 6px;
+    color: #FBF9FE;
+    font-size: 1rem;
+    padding: 0.75rem;
+}
+
+section#dates-container header form div input:focus {
+    outline: 2px solid #A881E6;
+}
+
+section#dates-container header form div input::placeholder {
+    color: #AFABB6;
+}
+
+section#dates-container header form button[type="submit"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 2.75rem;
+    height: 2.75rem;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    background-color: #7450AC;
+    border: 0;
+    align-self: flex-end;
+    margin-bottom: 0.1rem;
+    cursor: pointer;
+    flex: 0;
+}
+
+section#dates-container header form button[type="submit"] ion-icon {
+    color: #FBF9FE;
+    font-size: 1.5rem;
+}
+
+section#dates-container ul#dates {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    list-style-type: none;
+}
+
+section#dates-container ul#dates img#loading-gif {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 auto;
+}
+
+section#dates-container ul#dates li.without-dates p {
+    color: #E1E1E6;
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+section#dates-container ul#dates li.date {
+    
+}
