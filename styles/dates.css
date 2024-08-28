@@ -57,19 +57,22 @@ section#dates-container header form button[type="submit"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px;
+    border-radius: 50%;
+    width: 2.75rem;
     height: 2.75rem;
     min-width: 2.75rem;
     min-height: 2.75rem;
     background-color: #7450AC;
-    color: #FBF9FE;
-    font-size: 1rem;
-    font-weight: bold;
     border: 0;
     align-self: flex-end;
     margin-bottom: 0.1rem;
     cursor: pointer;
-    flex-grow: 1; /* Faz com que os inputs cresçam para ocupar o espaço disponível */
+    flex-shrink: 0; /* Impede que o botão encolha quando o espaço é limitado */
+}
+
+section#dates-container header form button[type="submit"] ion-icon {
+    color: #FBF9FE;
+    font-size: 1.5rem;
 }
 
 section#dates-container ul#dates {
