@@ -63,7 +63,7 @@ section#dates-container header form button[type="submit"] {
     align-self: flex-end;
     padding: 0.75rem;
     cursor: pointer;
-    flex: 1;
+    width: 100%;
 }
 
 section#dates-container ul#dates {
