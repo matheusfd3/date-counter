@@ -2,7 +2,7 @@ ul#dates-list {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    padding: 1.5rem 1rem;
+    margin-top: 1.750rem;
     list-style-type: none;
 }
 
@@ -24,6 +24,26 @@ ul#dates-list li.date-item {
     border-radius: 6px;
     padding: 1rem;
     position: relative;
+    box-shadow: 3px 3px 12px rgba(116, 80, 172, 0.9);
+    animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 3px 3px 12px rgba(116, 80, 172, 0.9);
+    }
+    25% {
+        box-shadow: 3px 3px 12px rgba(116, 80, 172, 0.6);
+    }
+    50% {
+        box-shadow: 3px 3px 12px rgba(116, 80, 172, 0.9);
+    }
+    75% {
+        box-shadow: 3px 3px 12px rgba(116, 80, 172, 0.6);
+    }
+    100% {
+        box-shadow: 3px 3px 12px rgba(116, 80, 172, 0.9);
+    }
 }
 
 ul#dates-list li.date-item ul.date-item-actions {
