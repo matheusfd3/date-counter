@@ -23,6 +23,10 @@ section#dates-container header form div#inputs-wrapper > div:first-child {
     flex: 1;
 }
 
+section#dates-container header form div#inputs-wrapper > div:first-child input {
+    flex: 1;
+}
+
 section#dates-container header form div#inputs-wrapper > div {
     display: flex;
     flex-direction: column;
