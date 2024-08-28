@@ -54,21 +54,16 @@ section#dates-container header form button[type="submit"] {
     align-items: center;
     justify-content: center;
     border-radius: 6px;
-    /* width: 2.75rem; */
-    height: 2.75rem;
-    /* min-width: 2.75rem; */
-    min-height: 2.75rem;
+    height: 3rem;
+    font-size: 1rem;
+    font-weight: bold;
     background-color: #7450AC;
+    color: #FBF9FE;
     border: 0;
     align-self: flex-end;
-    margin-bottom: 0.1rem;
+    padding: 0.75rem;
     cursor: pointer;
     flex: 1;
-}
-
-section#dates-container header form button[type="submit"] ion-icon {
-    color: #FBF9FE;
-    font-size: 1.5rem;
 }
 
 section#dates-container ul#dates {
