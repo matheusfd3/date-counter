@@ -15,15 +15,17 @@ section#dates-container header form {
 
 section#dates-container header form div#inputs-wrapper {
     display: flex;
-    align-items: center;
     gap: 0.75rem;
-    flex-wrap: wrap; /* Permite que os itens se movam para a linha seguinte se não houver espaço suficiente */
+    flex-wrap: wrap;
+}
+
+section#dates-container header form div#inputs-wrapper > div:first-child {
+    flex: 1;
 }
 
 section#dates-container header form div#inputs-wrapper > div {
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Faz com que os inputs cresçam para ocupar o espaço disponível */
 }
 
 section#dates-container header form label {
@@ -33,7 +35,6 @@ section#dates-container header form label {
 }
 
 section#dates-container header form input {
-    display: flex;
     background-color: #17171A;
     border: 2px solid #252529;
     border-radius: 6px;
@@ -48,7 +49,7 @@ section#dates-container header form input:focus {
     outline: 2px solid #A881E6;
 }
 
-section#dates-container header form input#date, section#dates-container header form input#date-input,
+section#dates-container header form input#date, section#dates-container header form input#date-input, 
 section#dates-container header form input#date, section#dates-container header form input#time-input {
     margin-bottom: 0;
 }
@@ -67,7 +68,6 @@ section#dates-container header form button[type="submit"] {
     align-self: flex-end;
     margin-bottom: 0.1rem;
     cursor: pointer;
-    flex-shrink: 0; /* Impede que o botão encolha quando o espaço é limitado */
 }
 
 section#dates-container header form button[type="submit"] ion-icon {
@@ -89,68 +89,8 @@ section#dates-container ul#dates img#loading-gif {
     margin: 0 auto;
 }
 
-section.workers-container ul.workers-list li.without-workers p {
-color: #E1E1E6;
-text-align: center;
-font-size: 0.75rem;
-}
-
-section.workers-container ul.workers-list li.worker {
-display: flex;
-justify-content: space-between;
-align-items: center;
-}
-
-section.workers-container ul.workers-list li.worker div.worker-infos {
-display: flex;
-align-items: center;
-gap: 1rem;
-}
-
-section.workers-container ul.workers-list li.worker div.worker-infos span.worker-pic {
-display: flex;
-align-items: center;
-justify-content: center;
-width: 2.5rem;
-height: 2.5rem;
-min-width: 2.5rem;
-max-width: 2.5rem;
-border-radius: 50%;
-background-color: #252529;
-}
-
-section.workers-container ul.workers-list li.worker div.worker-infos span.worker-pic ion-icon {
-font-size: 1.5rem;
-color: #E1E1E6;
-}
-
-section.workers-container ul.workers-list li.worker div.worker-infos span.worker-name {
-color: #E1E1E6;
-font-weight: bold;
-font-size: 1.1875rem;
-}
-
-section.workers-container ul.workers-list li.worker div.worker-infos span.worker-pic.elaine {
-background-color: #FFC0CB;
-}
-
-section.workers-container ul.workers-list li.worker div.worker-infos span.worker-pic.elaine ion-icon {
-color: #936168;
-}
-
-section.workers-container ul.workers-list li.worker ul.worker-actions {
-display: flex;
-gap: 1rem;
-list-style-type: none;
-}
-
-section.workers-container ul.workers-list li.worker ul.worker-actions li.worker-action button {
-background: transparent;
-border: 0;
-cursor: pointer;
-}
-
-section.workers-container ul.workers-list li.worker ul.worker-actions li.worker-action button ion-icon {
-color: #E1E1E6;
-font-size: 1.5rem;
+section#dates-container ul#dates li#without-dates p {
+    color: #E1E1E6;
+    text-align: center;
+    font-size: 0.75rem;
 }
