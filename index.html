@@ -20,7 +20,7 @@
                 <div id="inputs-wrapper">
                     <div>
                         <label for="datetime">Data e Hora</label>
-                        <input required type="datetime-local" placeholder="Escolha a data e hora" id="datetime">
+                        <input required type="datetime-local" placeholder="Escolha uma data e hora" id="datetime">
                     </div>
                     <button type="submit"><ion-icon name="add-outline"></ion-icon></button>
                 </div>
@@ -49,6 +49,14 @@
             // Definindo o valor do input datetime-local
             const dateTimeInput = document.getElementById('datetime');
             dateTimeInput.value = formattedDateTime;
+
+            dateTimeInput.addEventListener('input', function() {
+                if (this.value === '') {
+                    this.setAttribute('placeholder', 'Escolha uma data e hora');
+                } else {
+                    this.removeAttribute('placeholder');
+                }
+            });
         }
     </script>
 </body>
