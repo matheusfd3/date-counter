@@ -15,22 +15,41 @@
         <header>
             <h1>Contador de Datas</h1>
             <form action="javascript:void(0)" onsubmit="addDate()">
-                <div>
-                    <label for="date-title">Título</label>
-                    <input required type="text" name="worker" id="date-title" autocomplete="off" placeholder="Título da data">
+                <label for="date-title">Título</label>
+                <input required autocomplete="off" type="text" placeholder="Título da data" id="date-title">
+                <div id="inputs-wrapper">
+                    <div>
+                        <label for="datetime">Data e Hora</label>
+                        <input required type="datetime-local" placeholder="Escolha a data e hora" id="datetime">
+                    </div>
+                    <button type="submit"><ion-icon name="add-outline"></ion-icon></button>
                 </div>
-                <div>
-                    <label for="date">Data e Hora</label>
-                    <input required autocomplete="off" type="datetime-local" id="date" placeholder="Escolha uma data e hora">
-                </div>
-                <button type="submit"><ion-icon name="add-outline"></ion-icon></button>
             </form>
             <ul id="dates">
-                <img id="loading-gif" src="./images/loading.gif" alt="Gif">
+                <!-- <img id="loading-gif" src="./images/loading.gif" alt="Gif"> -->
             </ul>
         </header>
     </section>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        window.onload = () => {
+            const now = new Date();
+
+            // Obtendo os componentes da data e hora no fuso horário local
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0'); // Mês é zero-indexado
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            // Formatando como YYYY-MM-DDTHH:MM
+            const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
+
+            // Definindo o valor do input datetime-local
+            const dateTimeInput = document.getElementById('datetime');
+            dateTimeInput.value = formattedDateTime;
+        }
+    </script>
 </body>
 </html>
