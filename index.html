@@ -49,14 +49,6 @@
             // Definindo o valor do input datetime-local
             const dateTimeInput = document.getElementById('datetime');
             dateTimeInput.value = formattedDateTime;
-
-            dateTimeInput.addEventListener('input', function() {
-                if (this.value === '') {
-                    this.setAttribute('placeholder', 'Escolha uma data e hora');
-                } else {
-                    this.removeAttribute('placeholder');
-                }
-            });
         }
     </script>
 </body>

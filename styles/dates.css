@@ -17,12 +17,13 @@ section#dates-container header form div#inputs-wrapper {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    width: 100%;
 }
 
 section#dates-container header form div#inputs-wrapper > div {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    width: 100%;
 }
 
 section#dates-container header form label {
