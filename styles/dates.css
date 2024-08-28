@@ -13,31 +13,6 @@ section#dates-container header form {
     flex-direction: column;
 }
 
-section#dates-container header form div#inputs-wrapper {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-}
-
-section#dates-container header form div#inputs-wrapper > div:first-child {
-    flex: 1;
-}
-
-section#dates-container header form div#inputs-wrapper > div:first-child input {
-    width: 100%;
-}
-
-section#dates-container header form div#inputs-wrapper > div {
-    display: flex;
-    flex-direction: column;
-}
-
-section#dates-container header form label {
-    font-size: 0.75rem;
-    color: #AFABB6;
-    margin-bottom: 0.5rem;
-}
-
 section#dates-container header form input {
     background-color: #17171A;
     border: 2px solid #252529;
@@ -47,15 +22,11 @@ section#dates-container header form input {
     padding: 0.75rem;
     font-size: 1rem;
     height: 3rem;
+    width: 100%;
 }
 
 section#dates-container header form input:focus {
     outline: 2px solid #A881E6;
-}
-
-section#dates-container header form input#date, section#dates-container header form input#date-input, 
-section#dates-container header form input#date, section#dates-container header form input#time-input {
-    margin-bottom: 0;
 }
 
 section#dates-container header form button[type="submit"] {

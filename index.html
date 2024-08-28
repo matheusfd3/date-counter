@@ -15,19 +15,10 @@
         <header>
             <h1>Contador de Datas</h1>
             <form action="javascript:void(0)" onsubmit="addDate()">
-                <label for="title-input">Título</label>
                 <input required autocomplete="off" type="text" placeholder="Título da data" id="title-input">
-                <div id="inputs-wrapper">
-                    <div>
-                        <label for="date-input">Data</label>
-                        <input required type="date" placeholder="Escolha a data" id="date-input">
-                    </div>
-                    <div>
-                        <label for="time-input">Hora</label>
-                        <input required type="time" placeholder="Escolha a hora" id="time-input">
-                    </div>
-                    <button type="submit"><ion-icon name="add-outline"></ion-icon></button>
-                </div>
+                <input required type="date" placeholder="Escolha a data" id="date-input">
+                <input required type="time" placeholder="Escolha a hora" id="time-input">
+                <button type="submit"><ion-icon name="add-outline"></ion-icon></button>
             </form>
             <ul id="dates">
                 <img id="loading-gif" src="./images/loading.gif" alt="Gif">
