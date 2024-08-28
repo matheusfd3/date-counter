@@ -17,13 +17,13 @@ section#dates-container header form div#inputs-wrapper {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    width: 100%;
+    flex-wrap: wrap; /* Permite que os itens se movam para a linha seguinte se não houver espaço suficiente */
 }
 
 section#dates-container header form div#inputs-wrapper > div {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    flex-grow: 1; /* Faz com que os inputs cresçam para ocupar o espaço disponível */
 }
 
 section#dates-container header form label {
@@ -42,14 +42,14 @@ section#dates-container header form input {
     padding: 0.75rem;
     font-size: 1rem;
     height: 3rem;
-    width: 100%;
 }
 
 section#dates-container header form input:focus {
     outline: 2px solid #A881E6;
 }
 
-section#dates-container header form input#date, section#dates-container header form input#datetime {
+section#dates-container header form input#date, section#dates-container header form input#date-input,
+section#dates-container header form input#date, section#dates-container header form input#time-input {
     margin-bottom: 0;
 }
 
@@ -57,21 +57,19 @@ section#dates-container header form button[type="submit"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    width: 2.75rem;
+    border-radius: 6px;
     height: 2.75rem;
     min-width: 2.75rem;
     min-height: 2.75rem;
     background-color: #7450AC;
+    color: #FBF9FE;
+    font-size: 1rem;
+    font-weight: bold;
     border: 0;
     align-self: flex-end;
     margin-bottom: 0.1rem;
     cursor: pointer;
-}
-
-section#dates-container header form button[type="submit"] ion-icon {
-    color: #FBF9FE;
-    font-size: 1.5rem;
+    flex-grow: 1; /* Faz com que os inputs cresçam para ocupar o espaço disponível */
 }
 
 section#dates-container ul#dates {

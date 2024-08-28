@@ -15,14 +15,19 @@
         <header>
             <h1>Contador de Datas</h1>
             <form action="javascript:void(0)" onsubmit="addDate()">
-                <label for="date-title">Título</label>
-                <input required autocomplete="off" type="text" placeholder="Título da data" id="date-title">
+                <label for="title-input">Título</label>
+                <input required autocomplete="off" type="text" placeholder="Título da data" id="title-input">
                 <div id="inputs-wrapper">
                     <div>
-                        <label for="datetime">Data e Hora</label>
-                        <input required type="datetime-local" placeholder="Escolha uma data e hora" id="datetime">
+                        <label for="date-input">Data</label>
+                        <input required type="date" placeholder="Escolha a data" id="date-input">
                     </div>
-                    <button type="submit"><ion-icon name="add-outline"></ion-icon></button>
+                    <div>
+                        <label for="time-input">Hora</label>
+                        <input required type="time" placeholder="Escolha a hora" id="time-input">
+                    </div>
+                    <!-- <button type="submit"><ion-icon name="add-outline"></ion-icon></button> -->
+                    <button type="submit">Adicionar</button>
                 </div>
             </form>
             <ul id="dates">
@@ -42,6 +47,14 @@
             const day = String(now.getDate()).padStart(2, '0');
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
+
+            // Definindo a data no formato YYYY-MM-DD
+            const dateInput = document.getElementById('date-input');
+            dateInput.value = `${year}-${month}-${day}`;
+
+            // Definindo a hora no formato HH:MM
+            const timeInput = document.getElementById('time-input');
+            timeInput.value = `${hours}:${minutes}`;
 
             // Formatando como YYYY-MM-DDTHH:MM
             const formattedDateTime = `${year}-${month}-${day}T${hours}:${minutes}`;
