@@ -7,16 +7,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/form.css">
     <link rel="stylesheet" href="./styles/dates.css">
-    <title>Contador de Datas</title>
+    <title>Contador de Tempo</title>
 </head>
-<body onload="loadDatesFromLocalStorage()">
+<body>
     <section id="dates-container">
         <header>
-            <h1>Contador de Datas</h1>
-            <form action="javascript:void(0)" onsubmit="addDate()">
-                <label for="title-input">Título</label>
-                <input required autocomplete="off" type="text" placeholder="Título da data" id="title-input">
+            <h1>Contador de Tempo</h1>
+            <form action="javascript:void(0)" onsubmit="sendForm()">
+                <label for="date-title-input">Título</label>
+                <input required autocomplete="off" type="text" placeholder="Título da data" id="date-title-input">
                 <div id="inputs-wrapper">
                     <div>
                         <label for="date-input">Data</label>
@@ -29,13 +30,15 @@
                     <button type="submit">Adicionar</button>
                 </div>
             </form>
-            <ul id="dates">
+            <ul id="dates-list">
                 <img id="loading-gif" src="./images/loading.gif" alt="Gif">
             </ul>
         </header>
     </section>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="./javascript/moment-with-locales.js"></script>
+    <script src="./javascript/index.js"></script>
     <script>
         window.onload = () => {
             const now = new Date();
@@ -54,6 +57,8 @@
             // Definindo a hora no formato HH:MM
             const timeInput = document.getElementById('time-input');
             timeInput.value = `${hours}:${minutes}`;
+
+            loadDatesFromLocalStorage();
         }
     </script>
 </body>

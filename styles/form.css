@@ -1,0 +1,64 @@
+section#dates-container header {
+    padding: 1.5rem;
+}
+
+section#dates-container header h1 {
+    color: #E1E1E6;
+    margin-bottom: 1.53125rem;
+    font-size: 1.4375rem;
+}
+
+section#dates-container header form {
+    display: flex;
+    flex-direction: column;
+}
+
+section#dates-container header form label {
+    font-size: 0.75rem;
+    color: #AFABB6;
+    margin-bottom: 0.5rem;
+}
+
+section#dates-container header form input {
+    background-color: #17171A;
+    border: 2px solid #252529;
+    border-radius: 6px;
+    color: #AFABB6;
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    height: 3rem;
+}
+
+section#dates-container header form input:focus {
+    outline: 2px solid #A881E6;
+}
+
+section#dates-container header form div#inputs-wrapper {
+    display: flex;
+    gap: 0.75rem;
+}
+
+section#dates-container header form div#inputs-wrapper > div {
+    display: flex;
+    flex-direction: column;
+}
+
+section#dates-container header form input#date, section#dates-container header form input#date-input, 
+section#dates-container header form input#date, section#dates-container header form input#time-input {
+    margin-bottom: 0;
+}
+
+section#dates-container header form button[type="submit"] {
+    background-color: #7450AC;
+    border-radius: 6px;
+    border: 0;
+    width: 100%;
+    height: 3rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #FBF9FE;
+    cursor: pointer;
+    align-self: flex-end;
+}
