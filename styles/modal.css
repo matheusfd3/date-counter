@@ -1,0 +1,78 @@
+section#modal-container {
+    display: none;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 100;
+}
+
+section#modal-container main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: #17171A;
+    border: 2px solid #A881E6;
+    border-radius: 6px;
+}
+
+section#modal-container main header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+section#modal-container main header h3 {
+    color: #E1E1E6;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+section#modal-container main header button {
+    position: absolute;
+    right: 0;
+    display: flex;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+section#modal-container main header button ion-icon {
+    font-size: 2rem;
+    color: #A881E6;
+    top: 0;
+    right: 0;
+}
+
+section#modal-container main div#table-container {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 2px solid #252529;
+    border-radius: 6px;
+}
+  
+section#modal-container main div#table-container table {
+    width: 100%;
+    border-collapse: collapse; /* Remove o espaçamento entre as células */
+}
+
+section#modal-container main div#table-container table th {
+    background-color: #252529;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+section#modal-container main div#table-container table th, td {
+    padding: 0.3125rem;
+    text-align: center;
+    font-size: 0.75rem;
+}

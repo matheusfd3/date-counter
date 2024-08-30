@@ -1,41 +1,47 @@
-var dates = [];
+let userDates = [];
 
-function loadDatesFromLocalStorage() {
-    dates = JSON.parse(localStorage.getItem('dates'));
-    if (dates === null) {
-        dates = [];
+function loadUserDatesFromLocalStorage() {
+    userDates = JSON.parse(localStorage.getItem('userDates'));
+
+    if (userDates === null) {
+        userDates = [];
     }
 
-    loadDatesOnPage();
+    loadUserDatesOnPage();
 }
 
-function saveDateToLocalStorage() {
-    localStorage.setItem('dates', JSON.stringify(dates));
+function saveUserDatesToLocalStorage() {
+    localStorage.setItem('userDates', JSON.stringify(userDates));
 }
 
-function loadDatesOnPage() {
-    var datesList = document.getElementById('dates-list');
-    datesList.innerHTML = '';
+function loadUserDatesOnPage() {
+    const dateListDOM = document.getElementById('date-list');
+    dateListDOM.innerHTML = '';
 
-    if (dates.length === 0) {
-        datesList.innerHTML = `
+    if (userDates.length === 0) {
+        dateListDOM.innerHTML = `
             <li id="without-dates">
                 <p>&lt;Sem datas cadastradas&gt;</p>
             </li>
             `;
     } else {
-        for (var i = 0; i < dates.length; i++) {
-            var currentDate = moment();
-            var date = moment(`${dates[i].date} ${dates[i].time}`, 'YYYY-MM-DD HH:mm');
+        for (let i = 0; i < userDates.length; i++) {
+            const userDate = userDates[i];
 
-            let startDate, endDate;
+            const selectedDate = moment(`${userDate.selectedDate}`, 'YYYY-MM-DD HH:mm');
+            const currentDate = moment();
 
-            if (currentDate.isBefore(date)) {
+            let startDate, endDate, classNameLi;
+
+            if (currentDate.isBefore(selectedDate)) {
                 startDate = currentDate.clone();
-                endDate = date.clone();
+                endDate = selectedDate.clone();
+                classNameLi = 'pulse-red';
+                
             } else {
-                startDate = date.clone();
+                startDate = selectedDate.clone();
                 endDate = currentDate.clone();
+                classNameLi = 'pulse-green';
             }
 
             const yearsDiff = endDate.diff(startDate, 'years');
@@ -55,28 +61,31 @@ function loadDatesOnPage() {
 
             const secondsDiff = endDate.diff(startDate, 'seconds');
 
-            const dateTitle = dates[i].title;
-
-            datesList.innerHTML += `
-                <li class="date-item">
+            dateListDOM.innerHTML += `
+                <li class="date-item ${classNameLi}">
                     <ul class="date-item-actions">
                         <li>
-                            <button onclick="resetDate(${i})">
+                            <button onclick="resetUserDate(${i})">
                                 <ion-icon name="refresh-outline"></ion-icon>
                             </button>
+                            ${userDate.history.length > 0 ? `
+                                <button onclick="openUserDateHistoryModal(${i})">
+                                    <ion-icon name="calendar-outline"></ion-icon>
+                                </button>`
+                            : ''}
                         </li>
                         <li>
-                            <button onclick="updateDateTitle(${i})">
+                            <button onclick="updateUserDateTitle(${i})">
                                 <ion-icon name="create-outline"></ion-icon>
                             </button>
-                            <button onclick="deleteDate(${i})">
+                            <button onclick="deleteUserDate(${i})">
                                 <ion-icon name="trash-outline"></ion-icon>
                             </button>
                         </li>
                     </ul>
                     <div class="date-item-header">
-                        <h2>${dateTitle}</h2>
-                        <span>(${date.format('DD')}/${date.format('MM')}/${date.format('YYYY')} ${date.format('HH:mm')})</span>
+                        <h2>${userDate.title}</h2>
+                        <span>(${selectedDate.format('DD/MM/YYYY HH:mm')})</span>
                     </div>
                     <div class="date-item-content-container">
                         <ul>
@@ -114,99 +123,129 @@ function loadDatesOnPage() {
     }
 }
 
-function createDate(newDate) {
-    dates.push(newDate);
-    saveDateToLocalStorage();
-    loadDatesOnPage();
+function createUserDate(newUserDate) {
+    userDates.push(newUserDate);
+    saveUserDatesToLocalStorage();
+    loadUserDatesOnPage();
 }
 
-function updateDateTitle(index) {
-    var date = dates[index];
-    var newDateTitle = prompt('Digite o novo título da data', date.title).trim();
+function updateUserDateTitle(index) {
+    const userDate = userDates[index];
+    const newUserDateTitle = prompt('Digite um novo título para a data:', userDate.title).trim();
 
-    const dateTitles = dates.map(date => date.title);
+    const userDateTitles = userDates.map(userDate => userDate.title);
 
-    if (newDateTitle == date.title || newDateTitle === null) {
+    if (newUserDateTitle == userDate.title || newUserDateTitle === null) {
         return;
-    } else if (newDateTitle === '') {
+    } else if (newUserDateTitle === '') {
         alert('Por favor, insira um título válido.');
         return;
-    } else if (dateTitles.includes(newDateTitle)) {
+    } else if (userDateTitles.includes(newUserDateTitle)) {
         alert('Já existe uma data cadastrada com este título!');
         return;
     }
 
-    dates[index].title = newDateTitle;
-    saveDateToLocalStorage();
-    loadDatesOnPage();
+    userDates[index].title = newUserDateTitle;
+    saveUserDatesToLocalStorage();
+    loadUserDatesOnPage();
 }
 
-function resetDate(index) {
-    var date = dates[index];
-    if (confirm(`Deseja realmente resetar a data "${date.title}" para a data atual?`)) {
-        const now = new Date();
+function resetUserDate(index) {
+    const userDate = userDates[index];
 
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
+    if (confirm(`Deseja realmente resetar a data "${userDate.title}"?`)) {
+        const selectedDate = moment(`${userDate.selectedDate}`, 'YYYY-MM-DD HH:mm');
+        const currentDate = moment();
 
-        dates[index].date = `${year}-${month}-${day}`;
-        dates[index].time = `${hours}:${minutes}`;
+        let startDate, startDateBackup, endDate;
 
-        saveDateToLocalStorage();
-        loadDatesOnPage();
+        if (currentDate.isBefore(selectedDate)) {
+            startDateBackup = currentDate.clone();
+            startDate = currentDate.clone();
+            endDate = selectedDate.clone();
+        } else {
+            startDateBackup = selectedDate.clone();
+            startDate = selectedDate.clone();
+            endDate = currentDate.clone();
+        }
+
+        if (endDate.diff(startDate, 'seconds') < 60) {
+            alert('Você só pode resetar datas com pelo menos 1 minuto!');
+            return;
+        }
+
+        const yearsDiff = endDate.diff(startDate, 'years');
+        startDate.add(yearsDiff, 'years');
+
+        const monthsDiff = endDate.diff(startDate, 'months');
+        startDate.add(monthsDiff, 'months');
+
+        const daysDiff = endDate.diff(startDate, 'days');
+        startDate.add(daysDiff, 'days');
+
+        const hoursDiff = endDate.diff(startDate, 'hours');
+        startDate.add(hoursDiff, 'hours');
+
+        const minutesDiff = endDate.diff(startDate, 'minutes');
+        startDate.add(minutesDiff, 'minutes');
+
+        const newUserDateHistory = {
+            startDate: startDateBackup.format('YYYY-MM-DD HH:mm'),
+            endDate: endDate.format('YYYY-MM-DD HH:mm'),
+            years: yearsDiff,
+            months: monthsDiff,
+            days: daysDiff,
+            hours: hoursDiff,
+            minutes: minutesDiff
+        }
+
+        userDates[index].selectedDate = currentDate.format('YYYY-MM-DD HH:mm');
+        userDates[index].history.push(newUserDateHistory);
+
+        saveUserDatesToLocalStorage();
+        loadUserDatesOnPage();
     }
 }
 
-function deleteDate(index) {
-    var date = dates[index];
-    if (confirm(`Deseja realmente excluir a data "${date.title}"?`)) {
-        dates.splice(index, 1);
-        saveDateToLocalStorage();
-        loadDatesOnPage();
+function deleteUserDate(index) {
+    const userDate = userDates[index];
+    if (confirm(`Deseja realmente excluir a data "${userDate.title}"?`)) {
+        userDates.splice(index, 1);
+        saveUserDatesToLocalStorage();
+        loadUserDatesOnPage();
     }
 }
 
 function sendForm() {
-    var dateTitleInput = document.getElementById('date-title-input');
-    var dateInput = document.getElementById('date-input');
-    var timeInput = document.getElementById('time-input');
+    const dateTitleInput = document.getElementById('date-title-input');
+    const dateInput = document.getElementById('date-input');
+    const timeInput = document.getElementById('time-input');
 
-    var dateTitle = dateTitleInput.value.trim();
-    var date = dateInput.value;
-    var time = timeInput.value;
-
-    const now = new Date();
-
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0'); // Mês é zero-indexado
-    const day = String(now.getDate()).padStart(2, '0');
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-
-    dateTitleInput.value = '';
-    dateInput.value = `${year}-${month}-${day}`;
-    timeInput.value = `${hours}:${minutes}`;
-
-    const dateTitles = dates.map(date => date.title);
+    const dateTitle = dateTitleInput.value.trim();
+    const userDateTitles = userDates.map(userDate => userDate.title);
 
     if (dateTitle === '') {
         alert('Por favor, insira um título válido.');
         return;
-    } else if (dateTitles.includes(dateTitle)) {
+    } else if (userDateTitles.includes(dateTitle)) {
         alert('Já existe uma data cadastrada com este título!');
         return;
     }
 
-    var newDate = {
+    const selectedDate = `${dateInput.value} ${timeInput.value}`;
+    const currentDate = moment();
+
+    dateTitleInput.value = '';
+    dateInput.value = currentDate.format('YYYY-MM-DD');
+    timeInput.value = '00:00';
+
+    const newUserDate = {
         title: dateTitle,
-        date: date,
-        time: time
+        selectedDate: selectedDate,
+        history: []
     }
 
-    createDate(newDate);
+    createUserDate(newUserDate);
 }
 
-setInterval(loadDatesOnPage, 1000);
+setInterval(loadUserDatesOnPage, 1000);

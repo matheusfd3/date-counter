@@ -9,16 +9,17 @@
     <link rel="stylesheet" href="./styles/base.css">
     <link rel="stylesheet" href="./styles/form.css">
     <link rel="stylesheet" href="./styles/dates.css">
+    <link rel="stylesheet" href="./styles/modal.css">
     <title>Contador de Tempo</title>
 </head>
 <body>
-    <section id="dates-container">
+    <section id="form-container">
         <header>
             <h1>Contador de Tempo</h1>
             <form action="javascript:void(0)" onsubmit="sendForm()">
                 <label for="date-title-input">Título</label>
                 <input required autocomplete="off" type="text" placeholder="Título da data" id="date-title-input">
-                <div id="inputs-wrapper">
+                <div id="form-inputs-wrapper">
                     <div>
                         <label for="date-input">Data</label>
                         <input required type="date" placeholder="Escolha a data" id="date-input">
@@ -30,35 +31,53 @@
                     <button type="submit">Adicionar</button>
                 </div>
             </form>
-            <ul id="dates-list">
+            <ul id="date-list">
                 <img id="loading-gif" src="./images/loading.gif" alt="Gif">
             </ul>
         </header>
+    </section>
+    <section id="modal-container">
+        <main>
+            <header>
+                <h3 id="modal-title">Histórico</h3>
+                <button onclick="closeUserDateHistoryModal()">
+                    <ion-icon name="close-outline"></ion-icon>
+                </button>
+            </header>
+            <div id="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data Início</th>
+                            <th>Data Fim</th>
+                            <th>Anos</th>
+                            <th>Meses</th>
+                            <th>Dias</th>
+                            <th>Horas</th>
+                            <th>Minutos</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-table-body"></tbody>
+                </table>
+            </div>
+        </main>
     </section>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="./javascript/moment-with-locales.js"></script>
     <script src="./javascript/index.js"></script>
+    <script src="./javascript/modal.js"></script>
     <script>
         window.onload = () => {
-            const now = new Date();
+            const currentDate = moment();
 
-            // Obtendo os componentes da data e hora no fuso horário local
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0'); // Mês é zero-indexado
-            const day = String(now.getDate()).padStart(2, '0');
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-
-            // Definindo a data no formato YYYY-MM-DD
             const dateInput = document.getElementById('date-input');
-            dateInput.value = `${year}-${month}-${day}`;
-
-            // Definindo a hora no formato HH:MM
             const timeInput = document.getElementById('time-input');
-            timeInput.value = `${hours}:${minutes}`;
 
-            loadDatesFromLocalStorage();
+            dateInput.value = currentDate.format('YYYY-MM-DD');
+            timeInput.value = '00:00';
+
+            loadUserDatesFromLocalStorage();
         }
     </script>
 </body>
