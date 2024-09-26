@@ -14,11 +14,18 @@ section#form-container header form {
     gap: 0.75rem;
 }
 
+section#form-container header form div.inputs-wrapper {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+}
+
 section#form-container header form div.label-input-wrapper {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     flex: 1;
+    min-width: 0;
 }
 
 section#form-container header form div.label-input-wrapper label {
@@ -37,11 +44,6 @@ section#form-container header form div.label-input-wrapper input {
 
 section#form-container header form div.label-input-wrapper input:focus {
     outline: 2px solid #A881E6;
-}
-
-section#form-container header form div.inputs-wrapper {
-    display: flex;
-    gap: 0.75rem;
 }
 
 section#form-container header form button[type="submit"] {
