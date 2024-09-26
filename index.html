@@ -17,19 +17,21 @@
         <header>
             <h1>Contador de Tempo</h1>
             <form action="javascript:void(0)" onsubmit="sendForm()">
-                <label for="date-title-input">Título</label>
-                <input required autocomplete="off" type="text" placeholder="Título da data" id="date-title-input">
-                <div id="form-inputs-wrapper">
-                    <div>
+                <div class="label-input-wrapper">
+                    <label for="date-title-input">Título</label>
+                    <input required autocomplete="off" type="text" placeholder="Título da data" id="date-title-input">
+                </div>
+                <div class="inputs-wrapper">
+                    <div class="label-input-wrapper">
                         <label for="date-input">Data</label>
                         <input required type="date" placeholder="Escolha a data" id="date-input">
                     </div>
-                    <div>
+                    <div class="label-input-wrapper">
                         <label for="time-input">Hora</label>
                         <input required type="time" placeholder="Escolha a hora" id="time-input">
                     </div>
-                    <button type="submit">Adicionar</button>
                 </div>
+                <button type="submit">Adicionar</button>
             </form>
             <ul id="date-list">
                 <img id="loading-gif" src="./images/loading.gif" alt="Gif">
