@@ -218,8 +218,7 @@ function deleteUserDate(index) {
 
 function sendForm() {
     const dateTitleInput = document.getElementById('date-title-input');
-    const dateInput = document.getElementById('date-input');
-    const timeInput = document.getElementById('time-input');
+    const dateTimeInput = document.getElementById('date-time-input');
 
     const dateTitle = dateTitleInput.value.trim();
     const userDateTitles = userDates.map(userDate => userDate.title);
@@ -232,12 +231,11 @@ function sendForm() {
         return;
     }
 
-    const selectedDate = `${dateInput.value} ${timeInput.value}`;
+    const selectedDate = dateTimeInput.value.replace('T', ' ');
     const currentDate = moment();
 
     dateTitleInput.value = '';
-    dateInput.value = currentDate.format('YYYY-MM-DD');
-    timeInput.value = '00:00';
+    dateTimeInput.value = currentDate.format('YYYY-MM-DDT00:00');
 
     const newUserDate = {
         title: dateTitle,

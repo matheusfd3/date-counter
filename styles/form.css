@@ -42,13 +42,13 @@ section#form-container header form div.label-input-wrapper input {
 }
 
 section#form-container header form div.label-input-wrapper input:focus {
-    outline: 2px solid #A881E6;
+    outline: 2px solid #7450AC;
 }
 
 section#form-container header form button[type="submit"] {
     background-color: #7450AC;
     border-radius: 6px;
-    border: 0;
+    border: 2px solid #7450AC;
     width: 100%;
     padding: 0.75rem;
     font-size: 1rem;
