@@ -91,6 +91,8 @@ ul#date-list li.date-item div.date-item-header {
 ul#date-list li.date-item div.date-item-header h2 {
     color: #FBF9FE;
     font-size: 1.250rem;
+    max-width: 12rem;
+    text-align: center;
 }
 
 ul#date-list li.date-item div.date-item-header span {
