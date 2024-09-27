@@ -43,6 +43,8 @@ section#form-container header form div.label-input-wrapper input {
 section#form-container header form div.label-input-wrapper input[type="date"],
 section#form-container header form div.label-input-wrapper input[type="time"] {
     appearance: none;
+    display: block;
+    width: 100%;
     text-align: left;
 }
 
