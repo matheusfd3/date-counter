@@ -44,6 +44,7 @@ section#form-container header form div.label-input-wrapper input {
     color: #AFABB6;
     padding: 0.75rem;
     font-size: 1rem;
+    height: 3rem;
 }
 
 section#form-container header form div.label-input-wrapper input:focus {
