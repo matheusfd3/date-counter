@@ -24,7 +24,6 @@ section#form-container header form div.label-input-wrapper {
     flex-direction: column;
     gap: 0.25rem;
     flex: 1;
-    min-width: 0;
 }
 
 section#form-container header form div.label-input-wrapper label {
@@ -35,6 +34,8 @@ section#form-container header form div.label-input-wrapper label {
 section#form-container header form div.label-input-wrapper input[type="date"],
 section#form-container header form div.label-input-wrapper input[type="time"] {
     appearance: none;
+    flex: 1;
+    min-width: 0;
 }
 
 section#form-container header form div.label-input-wrapper input {
