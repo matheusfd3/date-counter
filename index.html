@@ -23,15 +23,11 @@
                 </div>
                 <div class="inputs-wrapper">
                     <div class="label-input-wrapper">
-                        <label for="date-input">Data</label>
-                        <input required type="date" placeholder="Escolha a data" id="date-input">
+                        <label for="date-time-input">Data e Hora</label>
+                        <input required type="datetime-local" placeholder="Escolha a data" id="date-time-input">
                     </div>
-                    <div class="label-input-wrapper">
-                        <label for="time-input">Hora</label>
-                        <input required type="time" placeholder="Escolha a hora" id="time-input">
-                    </div>
+                    <button type="submit">Adicionar</button>
                 </div>
-                <button type="submit">Adicionar</button>
             </form>
             <ul id="date-list">
                 <img id="loading-gif" src="./images/loading.gif" alt="Gif">
@@ -73,11 +69,8 @@
         window.onload = () => {
             const currentDate = moment();
 
-            const dateInput = document.getElementById('date-input');
-            const timeInput = document.getElementById('time-input');
-
-            dateInput.value = currentDate.format('YYYY-MM-DD');
-            timeInput.value = '00:00';
+            const datetimeInput = document.getElementById('date-time-input');
+            datetimeInput.value = currentDate.format('YYYY-MM-DDT00:00');
 
             loadUserDatesFromLocalStorage();
         }
