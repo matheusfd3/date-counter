@@ -6,6 +6,8 @@ Este projeto tem como objetivo calcular a diferença entre uma data específica 
 ## Funcionalidades
 - O usuário pode inserir uma data de referência, através de um seletor de datas.
 - A diferença é exibida em um formato legível, por exemplo: "2 anos, 3 meses, 15 dias, 4 horas, 30 minutos e 10 segundos".
+- Datas em Verde: Quando a data fornecida está no passado em relação à data atual, o tempo entre elas está aumentando. Nesse caso, o intervalo de tempo será exibido em verde, indicando que o período está se expandindo, ideal para contagens de tempo de relacionamento ou tempo de serviço.
+- Datas em Vermelho: Quando a data fornecida está no futuro, o tempo entre as datas está diminuindo. Isso é indicado em vermelho, sugerindo que o intervalo está encurtando, ideal para contagens regressivas ou prazos próximos.
 
 ## Como usar
 1. Clone o repositório em sua máquina local:
@@ -28,6 +30,3 @@ Este projeto é distribuído sob a licença MIT.
 
 ## Screenshots
 ![App Screenshot](https://github.com/matheusfd3/date-counter/blob/main/.github/image01.png)
-![App Screenshot](https://github.com/matheusfd3/date-counter/blob/main/.github/image02.png)
-![App Screenshot](https://github.com/matheusfd3/date-counter/blob/main/.github/image03.png)
-![App Screenshot](https://github.com/matheusfd3/date-counter/blob/main/.github/image04.png)
