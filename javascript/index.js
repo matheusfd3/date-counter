@@ -16,7 +16,7 @@ function saveUserDatesToLocalStorage() {
 
 function loadUserDatesOnPage() {
     const dateListDOM = document.getElementById('date-list');
-    dateListDOM.innerHTML = '';
+    let dateListContent = '';
 
     if (userDates.length === 0) {
         dateListDOM.innerHTML = `
@@ -61,7 +61,7 @@ function loadUserDatesOnPage() {
 
             const secondsDiff = endDate.diff(startDate, 'seconds');
 
-            dateListDOM.innerHTML += `
+            dateListContent += `
                 <li class="date-item ${classNameLi}">
                     <ul class="date-item-actions">
                         <li>
@@ -120,6 +120,7 @@ function loadUserDatesOnPage() {
                 </li>
             `;
         }
+        dateListDOM.innerHTML = dateListContent;
     }
 }
 
