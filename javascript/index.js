@@ -14,6 +14,30 @@ function saveUserDatesToLocalStorage() {
   localStorage.setItem("userDates", JSON.stringify(userDates));
 }
 
+// Função auxiliar para calcular a diferença com precisão
+function getPreciseDiff(start, end) {
+  const clone = start.clone();
+
+  const years = end.diff(clone, "years");
+  clone.add(years, "years");
+
+  const months = end.diff(clone, "months");
+  clone.add(months, "months");
+
+  const days = end.diff(clone, "days");
+  clone.add(days, "days");
+
+  const hours = end.diff(clone, "hours");
+  clone.add(hours, "hours");
+
+  const minutes = end.diff(clone, "minutes");
+  clone.add(minutes, "minutes");
+
+  const seconds = end.diff(clone, "seconds");
+
+  return { years, months, days, hours, minutes, seconds };
+}
+
 function loadUserDatesOnPage() {
   const dateListDOM = document.getElementById("date-list");
   const now = moment();
@@ -34,30 +58,6 @@ function loadUserDatesOnPage() {
     const diffB = Math.abs(moment(b.selectedDate).valueOf() - now.valueOf());
     return diffA - diffB;
   });
-
-  // Função auxiliar para calcular a diferença com precisão
-  function getPreciseDiff(start, end) {
-    const clone = start.clone();
-
-    const years = end.diff(clone, "years");
-    clone.add(years, "years");
-
-    const months = end.diff(clone, "months");
-    clone.add(months, "months");
-
-    const days = end.diff(clone, "days");
-    clone.add(days, "days");
-
-    const hours = end.diff(clone, "hours");
-    clone.add(hours, "hours");
-
-    const minutes = end.diff(clone, "minutes");
-    clone.add(minutes, "minutes");
-
-    const seconds = end.diff(clone, "seconds");
-
-    return { years, months, days, hours, minutes, seconds };
-  }
 
   // Montagem dos itens
   const dateListContent = userDates
@@ -151,7 +151,7 @@ function updateUserDateTitle(index) {
     return;
   }
 
-  userDates[index].title = newUserDateTitle;
+  userDate.title = newUserDateTitle;
   saveUserDatesToLocalStorage();
   loadUserDatesOnPage();
 }
@@ -159,58 +159,39 @@ function updateUserDateTitle(index) {
 function resetUserDate(index) {
   const userDate = userDates[index];
 
-  if (confirm(`Deseja realmente resetar a data "${userDate.title}"?`)) {
-    const selectedDate = moment(`${userDate.selectedDate}`, "YYYY-MM-DD HH:mm");
-    const currentDate = moment();
+  if (!confirm(`Deseja realmente resetar a data "${userDate.title}"?`)) return;
 
-    let startDate, startDateBackup, endDate;
+  const selectedDate = moment(userDate.selectedDate, "YYYY-MM-DD HH:mm");
+  const currentDate = moment();
 
-    if (currentDate.isBefore(selectedDate)) {
-      startDateBackup = currentDate.clone();
-      startDate = currentDate.clone();
-      endDate = selectedDate.clone();
-    } else {
-      startDateBackup = selectedDate.clone();
-      startDate = selectedDate.clone();
-      endDate = currentDate.clone();
-    }
+  const startDate = moment.min(selectedDate, currentDate);
+  const endDate = moment.max(selectedDate, currentDate);
 
-    if (endDate.diff(startDate, "seconds") < 60) {
-      alert("Você só pode resetar datas com pelo menos 1 minuto!");
-      return;
-    }
-
-    const yearsDiff = endDate.diff(startDate, "years");
-    startDate.add(yearsDiff, "years");
-
-    const monthsDiff = endDate.diff(startDate, "months");
-    startDate.add(monthsDiff, "months");
-
-    const daysDiff = endDate.diff(startDate, "days");
-    startDate.add(daysDiff, "days");
-
-    const hoursDiff = endDate.diff(startDate, "hours");
-    startDate.add(hoursDiff, "hours");
-
-    const minutesDiff = endDate.diff(startDate, "minutes");
-    startDate.add(minutesDiff, "minutes");
-
-    const newUserDateHistory = {
-      startDate: startDateBackup.format("YYYY-MM-DD HH:mm"),
-      endDate: endDate.format("YYYY-MM-DD HH:mm"),
-      years: yearsDiff,
-      months: monthsDiff,
-      days: daysDiff,
-      hours: hoursDiff,
-      minutes: minutesDiff,
-    };
-
-    userDates[index].selectedDate = currentDate.format("YYYY-MM-DD HH:mm");
-    userDates[index].history.push(newUserDateHistory);
-
-    saveUserDatesToLocalStorage();
-    loadUserDatesOnPage();
+  if (moment.duration(endDate.diff(startDate)).asMinutes() < 1) {
+    alert("Você só pode resetar datas com pelo menos 1 minuto!");
+    return;
   }
+
+  const { years, months, days, hours, minutes } = getPreciseDiff(
+    startDate,
+    endDate
+  );
+
+  const newUserDateHistory = {
+    startDate: startDate.format("YYYY-MM-DD HH:mm"),
+    endDate: endDate.format("YYYY-MM-DD HH:mm"),
+    years: years,
+    months: months,
+    days: days,
+    hours: hours,
+    minutes: minutes,
+  };
+
+  userDate.selectedDate = currentDate.format("YYYY-MM-DD HH:mm");
+  userDate.history.push(newUserDateHistory);
+
+  saveUserDatesToLocalStorage();
+  loadUserDatesOnPage();
 }
 
 function deleteUserDate(index) {
