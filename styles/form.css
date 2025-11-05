@@ -1,62 +1,54 @@
 section#form-container header {
-    padding: 1.5rem;
+  padding: 1.5rem;
 }
 
 section#form-container header h1 {
-    color: #E1E1E6;
-    margin-bottom: 1.53125rem;
-    font-size: 1.4375rem;
+  color: #e1e1e6;
+  margin-bottom: 1.53125rem;
+  font-size: 1.4375rem;
 }
 
 section#form-container header form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-section#form-container header form div.inputs-wrapper {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 section#form-container header form div.label-input-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 section#form-container header form div.label-input-wrapper label {
-    font-size: 0.75rem;
-    color: #AFABB6;
+  font-size: 0.75rem;
+  color: #afabb6;
 }
 
 section#form-container header form div.label-input-wrapper input {
-    background-color: #17171A;
-    border: 2px solid #252529;
-    border-radius: 6px;
-    color: #AFABB6;
-    padding: 0.75rem;
-    font-size: 1rem;
-    height: 3rem;
+  background-color: #17171a;
+  border: 2px solid #252529;
+  border-radius: 6px;
+  color: #afabb6;
+  padding: 0.75rem;
+  font-size: 1rem;
+  height: 3rem;
 }
 
 section#form-container header form div.label-input-wrapper input:focus {
-    outline: 2px solid #7450AC;
+  outline: 2px solid #7450ac;
 }
 
 section#form-container header form button[type="submit"] {
-    background-color: #7450AC;
-    border-radius: 6px;
-    border: 2px solid #7450AC;
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #FBF9FE;
-    cursor: pointer;
-    height: 3rem;
-    margin-top: auto;
-    flex-grow: 1;
-    flex-basis: 0;
+  background-color: #7450ac;
+  border-radius: 6px;
+  border: 2px solid #7450ac;
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fbf9fe;
+  cursor: pointer;
+  height: 3rem;
 }

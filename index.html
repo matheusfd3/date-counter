@@ -1,79 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/base.css">
-    <link rel="stylesheet" href="./styles/form.css">
-    <link rel="stylesheet" href="./styles/dates.css">
-    <link rel="stylesheet" href="./styles/modal.css">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/base.css" />
+    <link rel="stylesheet" href="./styles/form.css" />
+    <link rel="stylesheet" href="./styles/dates.css" />
+    <link rel="stylesheet" href="./styles/modal.css" />
     <title>Contador de Tempo</title>
-</head>
-<body>
+  </head>
+  <body>
     <section id="form-container">
-        <header>
-            <h1>Contador de Tempo</h1>
-            <form action="javascript:void(0)" onsubmit="sendForm()">
-                <div class="label-input-wrapper">
-                    <label for="date-title-input">Título</label>
-                    <input required autocomplete="off" type="text" placeholder="Título da data" id="date-title-input">
-                </div>
-                <div class="inputs-wrapper">
-                    <div class="label-input-wrapper">
-                        <label for="date-time-input">Data e Hora</label>
-                        <input required type="datetime-local" placeholder="Escolha a data" id="date-time-input">
-                    </div>
-                    <button type="submit">Adicionar</button>
-                </div>
-            </form>
-            <ul id="date-list">
-                <img id="loading-gif" src="./images/loading.gif" alt="Gif">
-            </ul>
-        </header>
+      <header>
+        <h1>Contador de Tempo</h1>
+        <form action="javascript:void(0)" onsubmit="sendForm()">
+          <div class="label-input-wrapper">
+            <label for="date-title-input">Título</label>
+            <input
+              required
+              autocomplete="off"
+              type="text"
+              placeholder="Título da data"
+              id="date-title-input"
+            />
+          </div>
+          <div class="label-input-wrapper">
+            <label for="date-time-input">Data e Hora</label>
+            <input
+              required
+              type="datetime-local"
+              placeholder="Escolha a data"
+              id="date-time-input"
+            />
+          </div>
+          <button type="submit">Adicionar</button>
+        </form>
+        <ul id="date-list">
+          <img id="loading-gif" src="./images/loading.gif" alt="Gif" />
+        </ul>
+      </header>
     </section>
     <section id="modal-container">
-        <main>
-            <header>
-                <h3 id="modal-title">Histórico</h3>
-                <button onclick="closeUserDateHistoryModal()">
-                    <ion-icon name="close-outline"></ion-icon>
-                </button>
-            </header>
-            <div id="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Data Início</th>
-                            <th>Data Fim</th>
-                            <th>Anos</th>
-                            <th>Meses</th>
-                            <th>Dias</th>
-                            <th>Horas</th>
-                            <th>Minutos</th>
-                        </tr>
-                    </thead>
-                    <tbody id="modal-table-body"></tbody>
-                </table>
-            </div>
-        </main>
+      <main>
+        <header>
+          <h3 id="modal-title">Histórico</h3>
+          <button onclick="closeUserDateHistoryModal()">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </header>
+        <div id="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Data Início</th>
+                <th>Data Fim</th>
+                <th>Anos</th>
+                <th>Meses</th>
+                <th>Dias</th>
+                <th>Horas</th>
+                <th>Minutos</th>
+              </tr>
+            </thead>
+            <tbody id="modal-table-body"></tbody>
+          </table>
+        </div>
+      </main>
     </section>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <script src="./javascript/moment-with-locales.js"></script>
     <script src="./javascript/index.js"></script>
     <script src="./javascript/modal.js"></script>
     <script>
-        window.onload = () => {
-            const currentDate = moment();
+      window.onload = () => {
+        const currentDate = moment();
 
-            const datetimeInput = document.getElementById('date-time-input');
-            datetimeInput.value = currentDate.format('YYYY-MM-DDT00:00');
+        const datetimeInput = document.getElementById("date-time-input");
+        datetimeInput.value = currentDate.format("YYYY-MM-DDT00:00");
 
-            loadUserDatesFromLocalStorage();
-        }
+        loadUserDatesFromLocalStorage();
+      };
     </script>
-</body>
+  </body>
 </html>
