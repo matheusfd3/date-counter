@@ -30,9 +30,8 @@ section#form-container
   form
   div.label-input-wrapper
   input[type="datetime-local"] {
-  -webkit-appearance: none;
-  appearance: none;
-  text-align: left;
+  -webkit-appearance: textfield;
+  appearance: textfield;
 }
 
 section#form-container header form div.label-input-wrapper input {
