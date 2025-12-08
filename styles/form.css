@@ -4,14 +4,14 @@ section#form-container header {
 
 section#form-container header h1 {
   color: #e1e1e6;
-  margin-bottom: 1.53125rem;
-  font-size: 1.4375rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 
 section#form-container header form {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 
 section#form-container header form div.label-input-wrapper {
@@ -32,6 +32,7 @@ section#form-container
   input[type="datetime-local"] {
   -webkit-appearance: none;
   appearance: none;
+  text-align: left;
 }
 
 section#form-container header form div.label-input-wrapper input {
@@ -54,6 +55,7 @@ section#form-container header form button[type="submit"] {
   border: 2px solid #7450ac;
   width: 100%;
   padding: 0.75rem;
+  margin-top: 0.25rem;
   font-size: 1rem;
   font-weight: bold;
   color: #fbf9fe;
