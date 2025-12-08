@@ -34,24 +34,6 @@ section#form-container
   appearance: none;
 }
 
-section#form-container
-  header
-  form
-  div.label-input-wrapper
-  input[type="datetime-local"]::-webkit-datetime-edit,
-section#form-container
-  header
-  form
-  div.label-input-wrapper
-  input[type="datetime-local"]::-webkit-datetime-edit-text,
-section#form-container
-  header
-  form
-  div.label-input-wrapper
-  input[type="datetime-local"]::-webkit-datetime-edit-field {
-  text-align: left;
-}
-
 section#form-container header form div.label-input-wrapper input {
   background-color: #17171a;
   border: 2px solid #252529;
